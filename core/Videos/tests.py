@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 
 from . import models
-from .models import Channel, Video, Comment
+from .models import Channel, Video, Comment, Playlist
 
 
 class ChannelModelTests(TestCase):
