@@ -1,17 +1,22 @@
 from django.contrib import admin
 from . import models
 
+
 class VideoAdmin(admin.ModelAdmin):
     list_display = ('name', 'views')
+
 
 class ChannelAdmin(admin.ModelAdmin):
     list_display = ('name', 'views', 'owner')
 
+
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('video', 'author', 'created_at')
 
+
 class PlaylistAdmin(admin.ModelAdmin):
     list_display = ('name', 'about', 'created_at')
+
 
 admin.site.register(models.Video, VideoAdmin)
 admin.site.register(models.Channel, ChannelAdmin)
