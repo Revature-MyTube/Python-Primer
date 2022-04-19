@@ -7,6 +7,9 @@ def home(request):
     homepage_videos = models.Video.objects.all()
     return render(request, 'home.html', {'videos': homepage_videos})
 
+# def main_list(request):
+   # return render(request, '.html', {'videos': recommended_videos})
+
 def upload(request):
     return render(request, 'upload.html')
 
