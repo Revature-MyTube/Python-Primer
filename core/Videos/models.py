@@ -17,6 +17,7 @@ Editable = True
 # TODO: Make this editable=False before deployment.
 
 class Channel(models.Model):
+
     try:
         uuid =          models.UUIDField(default=uuid4, editable=Editable, unique=True)
         name =          models.CharField(max_length=255)
@@ -38,8 +39,6 @@ class Channel(models.Model):
 
 
 
-
-
 class Playlist(models.Model):
     try:
         uuid =          models.UUIDField(default=uuid4, editable=Editable, unique=True)
@@ -56,6 +55,7 @@ class Playlist(models.Model):
 
 
 class Video(models.Model):
+
     try:
         uuid =          models.UUIDField(default=uuid4, editable=Editable, unique=True)
         name =          models.CharField(max_length=255)
