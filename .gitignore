@@ -1,7 +1,5 @@
 *.xlsx
 __pycache__
-secret_key.txt
-config.*
 *.mp4
 *.mp3
 *.avi
