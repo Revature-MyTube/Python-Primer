@@ -2,7 +2,10 @@
 {% block title %}{{video.name}}{% endblock %}
 {% block style %}
 <style>
-    .leftside{
+    html{
+        overflow-x: hidden;
+    }
+    .wholepage{
         width: 100%;
         height: 100%;
         background-color: blue;
@@ -12,12 +15,16 @@
     .video-container{
         min-height: 30rem;
         min-width: 14.125rem;
-        width: 100%;
+        max-width: 98%;
         background-color: black;
     }
-    video{
-        object-fit: contain;
-        /* margin-left: 50%; transform: translateX(-50%);  To center videos with the container but maybe not needed with contain*/
+    video, iframe{
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100%;
+        
     }
     .video-bottom-section{
         display: flex;
@@ -64,20 +71,21 @@
 
 
 {% block content %}   
-    {% if video.url.endswith('.mp4') %}
+<div class="wholepage"> 
     <div class="video-container">
-        <video controls autoplay>
-            <source src="{{video.url}}" type="video/mp4">
-        </video>
+        {% if 'mp4' in video.url %}
+            <video controls autoplay>
+                <source src="{{video.url}}" type="video/mp4">
+            </video>
+        {% elif 'youtube' in video.url %}
+            <iframe src="{{video.url}}" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        {% endif %}
     </div>
-    {% else %}
-    <iframe src="{{video.url}}" frameborder="0" 
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>
-    {% endif %}
     <!-- depending on the url, switch to an <iframe> when its a youtube video id or a <video> if its a file url -->
 
-    <div class="leftside">    
+       
         <div class="video-bottom-section">
             <div class="video-info">
                 <div class="channel-icon"></div>
@@ -112,6 +120,12 @@
             </div>
         </div>
         <!-- this is where the comments go. -->
+        <div>
+            <h5>this is a temp comment</h5>
+        </div>
+        <div>
+            <h5>this is a temp comment</h5>
+        </div>
     </div>
 
     <div class="rightside">
