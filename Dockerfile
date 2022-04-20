@@ -17,5 +17,5 @@ RUN date > /code/start.txt
 RUN chmod +x /code/entrypoint.sh
 ENTRYPOINT ["/code/entrypoint.sh"]
 
-# CMD ["gunicorn", "core/core.wsgi:application", "-w", "4", "-b", "0.0.0.0:8000"]
-CMD ["python", "core/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "core/core.wsgi:application", "-w", "4", "-b", "0.0.0.0:8000"]
+# CMD ["python", "core/manage.py", "runserver", "0.0.0.0:8000"]
