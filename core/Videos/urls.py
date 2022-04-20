@@ -7,7 +7,7 @@ urlpatterns = [
                   path("profile/<str:username>", views.profile, name="profile"),
                   path("watch/<str:video_id>", views.watch, name="watch"),
 
-
+# TODO: put this data in the database then remove html from the python file
 #               < iframe;
 # width = "1352";
 # height = "624";
