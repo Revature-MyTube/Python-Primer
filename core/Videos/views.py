@@ -38,6 +38,7 @@ def dislikeVideo(request, pk):
     # return HttpResponseRedirect(reverse('article_detail'), args=[str(pk)])
     return render(request, 'watch.html', {'video': video})
 
+
 # @require_http_methods(["POST"])
 # def removeLike(request, pk):
 #     video = get_object_or_404(models.Video, id=request.POST.get('video_id'))
