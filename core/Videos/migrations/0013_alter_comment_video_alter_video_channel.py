@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Videos', '0012_channel_id_playlist_id_video_id_alter_channel_uuid_and_more'),
+        ('Videos', '0011_remove_comment_uuid_comment_id'),
     ]
 
     operations = [
