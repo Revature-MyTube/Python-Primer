@@ -55,6 +55,7 @@ class Playlist(models.Model):
 
 
 class Video(models.Model):
+    # unable to migrate--django.db.utils.IntegrityError: UNIQUE constraint failed: Videos_video.id
 
     try:
         uuid =          models.UUIDField(default=uuid4, editable=Editable, unique=True)
@@ -65,13 +66,16 @@ class Video(models.Model):
         duration =      models.IntegerField(default=0)
         comments =      models.ManyToManyField('Comment', related_name='video_comments', blank=True)
         channel =       models.ForeignKey('Channel',on_delete=models.CASCADE, related_name='video_channel')
-        likes =         models.ManyToManyField('auth.User', related_name='video_likes', blank=True)
-        dislikes =      models.ManyToManyField('auth.User', related_name='video_dislikes', blank=True)
+        # likes =         models.ManyToManyField('auth.User', related_name='video_likes', blank=True)
+        # dislikes =      models.ManyToManyField('auth.User', related_name='video_dislikes', blank=True)
+        likes =         models.IntegerField(related_name='video_likes')
+        dislikes =      models.IntegerField(related_name='video_dislikes')
         views =         models.IntegerField(default=0)
         created_at =    models.DateTimeField(auto_now_add=True)
         updated_at =    models.DateTimeField(auto_now=True)
     except TypeError:
         logger.exception('A field was not correctly filled out when attempting to add a video')
+
 
 class Comment(models.Model):
     try:
@@ -85,3 +89,29 @@ class Comment(models.Model):
         updated_at =    models.DateTimeField(auto_now=True)
     except TypeError:
         logger.exception('A field was not correctly filled out when attempting to add a comment')
+
+LIKE_CHOICES = (
+    ('Like', 'Like'),
+    ('Unlike', 'Like'),
+)
+
+DISLIKE_CHOICES = (
+    ('Dislike', 'Dislike'),
+    ('Undislike', 'Undislike'),
+)
+
+class videoLike(models.Model):
+    video = models.ForeignKey(Video, on_delete=models.CASCADE)
+    value = models.CharField(choices=LIKE_CHOICES, default='Like', max_length=10)
+
+class videoDislike(models.Model):
+    video = models.ForeignKey(Video, on_delete=models.CASCADE)
+    value = models.CharField(choices=LIKE_CHOICES, default='Like', max_length=10)
+
+class commentLike(models.Model):
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    value = models.CharField(choices=LIKE_CHOICES, default='Dislike', max_length=10)
+
+class commentDislike(models.Model):
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    value = models.CharField(choices=DISLIKE_CHOICES, default='Dislike', max_length=10)
