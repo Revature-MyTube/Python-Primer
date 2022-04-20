@@ -12,34 +12,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='channel',
-            name='id',
-        ),
-        migrations.RemoveField(
-            model_name='comment',
-            name='id',
-        ),
-        migrations.RemoveField(
-            model_name='playlist',
-            name='created_at',
-        ),
-        migrations.RemoveField(
-            model_name='playlist',
-            name='id',
-        ),
-        migrations.RemoveField(
-            model_name='playlist',
-            name='updated_at',
-        ),
-        migrations.RemoveField(
-            model_name='video',
-            name='id',
-        ),
         migrations.AddField(
             model_name='comment',
             name='uuid',
-            field=models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, unique=True),
+            field=models.UUIDField(default=uuid.uuid4, serialize=False),
         ),
         migrations.AddField(
             model_name='playlist',
@@ -59,7 +35,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='channel',
             name='uuid',
-            field=models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, unique=True),
+            field=models.UUIDField(default=uuid.uuid4, serialize=False),
         ),
         migrations.AlterField(
             model_name='channel',
@@ -74,11 +50,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='playlist',
             name='uuid',
-            field=models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, unique=True),
+            field=models.UUIDField(default=uuid.uuid4, serialize=False ),
         ),
         migrations.AlterField(
             model_name='video',
             name='uuid',
-            field=models.UUIDField(default=uuid.uuid4, primary_key=True, serialize=False, unique=True),
+            field=models.UUIDField(default=uuid.uuid4, serialize=False),
         ),
     ]
