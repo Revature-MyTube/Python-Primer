@@ -8,20 +8,13 @@ urlpatterns = [
                   path("watch/<str:video_id>", views.watch, name="watch"),
 
               < iframe;
-width = "420";
-height = "315";
-src = "https://www.youtube.com/watch?v=TK6w8poGSkQ" >;
-</iframe >
-
-    path < iframe;
-width = "420";
-height = "315";
-src = "https://www.youtube.com/watch?v=BgIgKcqPd4k&t=43s" >;
-</iframe >
-
-path(iframe, width="420", height="315",
-     src="https://www.youtube.com/watch?v=1zrtBqZeylo" >;
-< / iframe >)
+width = "1352";
+height = "624";
+src = "https://www.youtube.com/embed/TK6w8poGSkQ";
+title = "YouTube video player";
+frameborder = "0";
+allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen > </iframe >
 
 # path("channel/<str:channel_id>", views.view_channel, name="view_channel"),
 # path("playlist/<str:playlist_id>", views.view_playlist, name="view_playlist"),
