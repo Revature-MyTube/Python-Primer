@@ -3,6 +3,7 @@
 from django.db import migrations, models
 import django.utils.timezone
 import uuid
+import random as rnd
 
 
 class Migration(migrations.Migration):
@@ -15,19 +16,19 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='channel',
             name='id',
-            field=models.BigAutoField(auto_created=True, default=django.utils.timezone.now, primary_key=True, serialize=False, verbose_name='ID'),
+            field=models.BigAutoField(auto_created=True, default=rnd.randint(1,199), primary_key=True, serialize=False, verbose_name='ID'),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='playlist',
             name='id',
-            field=models.BigAutoField(auto_created=True, default=12, primary_key=True, serialize=False, verbose_name='ID'),
+            field=models.BigAutoField(auto_created=True, default=rnd.randint(1,100), primary_key=True, serialize=False, verbose_name='ID'),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='video',
             name='id',
-            field=models.BigAutoField(auto_created=True, default=1, primary_key=True, serialize=False, verbose_name='ID'),
+            field=models.BigAutoField(auto_created=True, default=rnd.randint(1,100), primary_key=True, serialize=False, verbose_name='ID'),
             preserve_default=False,
         ),
         migrations.AlterField(
