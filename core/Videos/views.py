@@ -26,7 +26,7 @@ def watch(request, video_id):
 def likeVideo(request, pk): 
     video = get_object_or_404(models.Video, id=request.POST.get('video_id'))
     video.likes += 1
-    models.Video.objects.update(video)
+    video.save()
     # return HttpResponseRedirect(reverse('article_detail'), args=[str(pk)])
     return render(request, 'watch.html', {'video': video})
 
@@ -34,22 +34,9 @@ def likeVideo(request, pk):
 def dislikeVideo(request, pk):
     video = get_object_or_404(models.Video, id=request.POST.get('video_id'))
     video.dislikes += 1
-    models.Video.objects.update(video)
+    video.save()
     # return HttpResponseRedirect(reverse('article_detail'), args=[str(pk)])
     return render(request, 'watch.html', {'video': video})
-
-
-# @require_http_methods(["POST"])
-# def removeLike(request, pk):
-#     video = get_object_or_404(models.Video, id=request.POST.get('video_id'))
-#     video.likes -= 1
-#     return HttpResponseRedirect(reverse('article_detail'), args=[str(pk)])
-
-# @require_http_methods(["POST"])
-# def removeDislike(request, pk):
-#     video = get_object_or_404(models.Video, id=request.POST.get('video_id'))
-#     video.dislikes -= 1
-#     return HttpResponseRedirect(reverse('article_detail'), args=[str(pk)])
 
 @require_http_methods(["GET"])
 def view_channel(request, channel_id):
