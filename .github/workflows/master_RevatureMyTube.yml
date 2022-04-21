@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d4503eaad49644e0a48c251f15068bba }}/mathmagicmachine/mytube:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d4503eaad49644e0a48c251f15068bba }}/mytube:latest #${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
