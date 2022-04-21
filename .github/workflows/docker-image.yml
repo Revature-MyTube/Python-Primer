@@ -28,34 +28,34 @@ jobs:
           context: .
           push: true
           tags: env.IMAGE_NAME
-      -
-        name: Save Image as Tar
-        run: docker save --output ${{ format('{0}/{1}.tar', github.workspace, end.IMAGE_NAME) }} $IMAGE_NAME:${{ github.run_id }}
-      -
-        name: Create release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ secrets.GITHUB_TOKEN }}
-          release_name: ${{ format('{0}_{1}', env.IMAGE_NAME, github.run_id }}
-          draft: false
-          prerelease: false
-      -
-        name: Upload release
-        uses: actions/upload-release-asset@1.0.2
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ format('{0}/{1}.tar', github.workspace, env.IMAGE_NAME) }}
-          asset_name: ${{ format('{0}.tar', env.IMAGE_NAME) }}
-          asset_content_type: application/zip
-      -
-        name: Trigger an Azure DevOps deployment
-        uses: Azure/piplines@1
-        with:
-          azure-devops-project-url: 'https://dev.azure.com/brianstiner/PythonPrimerProject'
-          azure-pipline-name: 'PythonPrimerProject'
-          azure-devops-token: '${{ secrets.AZURE_DEVOPS_TOKEN }}'
+#       -
+#         name: Save Image as Tar
+#         run: docker save --output ${{ format('{0}/{1}.tar', github.workspace, end.IMAGE_NAME) }} $IMAGE_NAME:${{ github.run_id }}
+#       -
+#         name: Create release
+#         id: create_release
+#         uses: actions/create-release@v1
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         with:
+#           tag_name: ${{ secrets.GITHUB_TOKEN }}
+#           release_name: ${{ format('{0}_{1}', env.IMAGE_NAME, github.run_id }}
+#           draft: false
+#           prerelease: false
+#       -
+#         name: Upload release
+#         uses: actions/upload-release-asset@1.0.2
+#         env:
+#           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN }}
+#         with:
+#           upload_url: ${{ steps.create_release.outputs.upload_url }}
+#           asset_path: ${{ format('{0}/{1}.tar', github.workspace, env.IMAGE_NAME) }}
+#           asset_name: ${{ format('{0}.tar', env.IMAGE_NAME) }}
+#           asset_content_type: application/zip
+#       -
+#         name: Trigger an Azure DevOps deployment
+#         uses: Azure/piplines@1
+#         with:
+#           azure-devops-project-url: 'https://dev.azure.com/brianstiner/PythonPrimerProject'
+#           azure-pipline-name: 'PythonPrimerProject'
+#           azure-devops-token: '${{ secrets.AZURE_DEVOPS_TOKEN }}'
