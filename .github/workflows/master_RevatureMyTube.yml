@@ -48,4 +48,4 @@ jobs:
         app-name: 'RevatureMyTube'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_499384b3517d43d2a648f42dce7b408f }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d4503eaad49644e0a48c251f15068bba }}/mytube:latest #${{ github.sha }}'
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_d4503eaad49644e0a48c251f15068bba }}/mytube:latest' #${{ github.sha }}
